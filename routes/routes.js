@@ -1,14 +1,11 @@
 const express = require("express")
+const controller = require("../controller/controller")
+
 const router = express.Router()
 
-router.get("/", (req, res) => {
-	const data = {
-		nombre : "Moisés",
-		apellido : "Morente Salazar",
-		edad : 27
-	}
-	res.json(data)
-})
+router.get("/", controller.getData)
+
+router.post("/data", controller.sendData)
 
 
 module.exports = router
