@@ -3,9 +3,9 @@ const controller = require("../controller/controller")
 
 const router = express.Router()
 
-router.get("/", controller.getData)
+router.get("/api", controller.getData)
 
-router.post("/data", controller.sendData)
+router.post("/api/data", controller.sendData)
 
 
 module.exports = router
