@@ -77,7 +77,7 @@ router.delete("/", async (req, res) => {
     });
 
 		// BUG No se alcanza esta parte del código
-    res.status(204).send("Usuario eliminado con éxito");
+    res.status(200).send("Usuario eliminado con éxito");
 
   } catch (error) {
     res.status(500).send("Error al eliminar el usuario");
