@@ -1,12 +1,23 @@
 const express = require("express")
 const fs = require("fs")
 const util = require("util")
-const controller = require("../controller/controller")
 const path = require("path")
+const multer = require("multer")
+const bodyParser = require("body-parser");
+
+const storage = multer.diskStorage({
+  destination: "C:/Users/Daiara/Documents/programacion/web/drive-casero/storage/",
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
+
 const router = express.Router()
 
 
-router.get("/", (req, res, next) => {
+
+router.get("/api/dir", (req, res) => {
 
 	let { route } = req.body
 
@@ -48,6 +59,17 @@ router.get("/", (req, res, next) => {
 
   
   res.json(contenido)
+})
+
+
+
+router.post("/api/upload", upload.array("archivos", 10), (req, res) => {
+	if (!req.files) {
+    res.status(400).send('No se proporcionó ningún archivo');
+  } else {
+    // Aquí puedes realizar acciones con el archivo, como guardarlo en una base de datos o en el sistema de archivos
+    res.send('Archivo recibido y guardado');
+  }
 })
 
 module.exports = router
