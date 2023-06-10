@@ -3,7 +3,7 @@ const fs = require("fs")
 const util = require("util")
 const path = require("path")
 const multer = require("multer")
-const bodyParser = require("body-parser");
+
 
 const storage = multer.diskStorage({
   destination: "C:/Users/Daiara/Documents/programacion/web/drive-casero/storage/",
@@ -55,9 +55,6 @@ router.get("/api/dir", (req, res) => {
       console.log(e)
     }
 	})
-
-
-  
   res.json(contenido)
 })
 
