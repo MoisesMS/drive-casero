@@ -1,14 +1,9 @@
 const express = require("express");
-const controller = require("./controller/controller")
-const authRoutes = require("./routes/auth");
-// const protectedRoutes = require("./routes/protected");
+const routes = require("./routes/routes");
 
 const app = express();
 app.use(express.json());
 
-app.use(authRoutes);
-/*
-app.use(protectedRoutes);
-*/
+app.use(routes);
 
 module.exports = app;
